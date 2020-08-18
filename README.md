@@ -33,27 +33,70 @@ python test_envs/4_test_reacher2D.py
 
 ### Balance Bot
 
+A simple Pybullet robot. The goal is to maintain the cube upwards as long as possible. Adapted from [this repo](https://github.com/yconst/balance-bot/).
+
+Environment name: balancebot-v0
+
 <img src="imgs/balancebot.gif"/>
 
 
 ### Particle
 
+A Goal Env (for testing Hindsight Experience Replay) where a red particle must reach the green target in a 2D plane. The particle is controlled by force. Adapted from [here](https://github.com/openai/baselines/issues/428)
+
+Environment name: particle-v0
+
 <img src="imgs/particle.gif"/>
 
 ### Reacher2D
+
+An articulated arm in a 2D plane composed of 1 to 6 joints. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/benelot/pybullet-gym).
+
+Environment name: 
+- Reacher1Dof-v0
+- Reacher2Dof-v0
+- Reacher3Dof-v0
+- Reacher4Dof-v0
+- Reacher5Dof-v0
+- Reacher6Dof-v0
+- Reacher1Dof-v1  # goalEnv
+- Reacher2Dof-v1  # goalEnv
+- Reacher3Dof-v1  # goalEnv
+- Reacher4Dof-v1  # goalEnv
+- Reacher5Dof-v1  # goalEnv
+- Reacher6Dof-v1  # goalEnv
+
 
 <img src="imgs/reacher2D.gif"/>
 
 ### WidowX arm
 
+The WidowX robotic arm in Pybullet. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/bhyang/replab).
+
+Environment name:
+- widowx_reacher-v0   # environment for both the physical arm and the Pybullet simulation
+- widowx_reacher-v1   # environment for the physical arm only 
+- widowx_reacher-v2   # environment for the physical arm only + no start_rospy method 
+- widowx_reacher-v3   # environment for the physical arm only + no start_rospy method + goal oriented
+- widowx_reacher-v4   # environment for the Pybullet simulation only. ROS install not required
+- widowx_reacher-v5   # environment for the Pybullet simulation + no start_sim required + fixed goal
+- widowx_reacher-v6   # environment for the Pybullet simulation + no start_sim required + goal_oriented + fixed goal
+- widowx_reacher-v7   # environment for the Pybullet simulation + no start_sim required + random goal
+- widowx_reacher-v8   # environment for the Pybullet simulation + no start_sim required + goal_oriented + random goal
+- widowx_reacher-v12  # environment for the physical arm only + no start_rospy method + random goal
+- widowx_reacher-v13  # environment for the physical arm only + no start_rospy method + goal environment + random goal
+
+
 <img src="imgs/widowx.gif"/>
 
 ### Jaco arm
 
+The Jaco arm in Pybullet. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/Healthcare-Robotics/assistive-gym).
+
+Environment name: ReachingJaco-v1
+
 <img src="imgs/jaco.gif"/>
 
-
-Add gifs and environment description.
 
 ## Requirements
 
