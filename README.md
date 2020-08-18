@@ -20,7 +20,7 @@ python test_envs/4_test_reacher2D.py
 
 ## Environments description
 
-| **Name** | **Action space **  | **Observation space ** | **Rewards**   |
+| Name          | Action space                               | Observation space                                                     | Rewards                              |
 | balancebot-v0 | Discrete(9) - define wheel target velocity | Box(3,) - [cube orientation , cube angular velocity , wheel velocity] | 0.1 - abs(self.vt - self.vd) * 0.005 |
 | ---------| -------------------| -----------------------| ------------- |
 | ---------| -------------------| -----------------------| ------------- |
