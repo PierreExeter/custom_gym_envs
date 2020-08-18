@@ -1,13 +1,13 @@
-from gym_reacher_goalEnv.goal_envs.env_bases import BaseBulletEnv
-from gym_reacher_goalEnv.goal_envs.scene_bases import SingleRobotEmptyScene
+from gym_envs.reacher2D.goal_envs.env_bases import BaseBulletEnv
+from gym_envs.reacher2D.goal_envs.scene_bases import SingleRobotEmptyScene
 from gym import GoalEnv, spaces
 import numpy as np
-from gym_reacher_goalEnv.goal_envs.reacher import Reacher1
-from gym_reacher_goalEnv.goal_envs.reacher import Reacher2
-from gym_reacher_goalEnv.goal_envs.reacher import Reacher3
-from gym_reacher_goalEnv.goal_envs.reacher import Reacher4
-from gym_reacher_goalEnv.goal_envs.reacher import Reacher5
-from gym_reacher_goalEnv.goal_envs.reacher import Reacher6
+from gym_envs.reacher2D.goal_envs.reacher import Reacher1
+from gym_envs.reacher2D.goal_envs.reacher import Reacher2
+from gym_envs.reacher2D.goal_envs.reacher import Reacher3
+from gym_envs.reacher2D.goal_envs.reacher import Reacher4
+from gym_envs.reacher2D.goal_envs.reacher import Reacher5
+from gym_envs.reacher2D.goal_envs.reacher import Reacher6
 
 
 class ReacherBulletEnv1(BaseBulletEnv, GoalEnv):

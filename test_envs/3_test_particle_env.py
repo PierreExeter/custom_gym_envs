@@ -6,10 +6,10 @@ import time
 env = gym.make('particle-v0')
 # env.render(mode="human")   
 
-print(env.action_space)
+print("Action space: ", env.action_space)
 print(env.action_space.high)
 print(env.action_space.low)
-print(env.observation_space)
+print("Observation space: ", env.observation_space)
 # print(env.observation_space.high)
 # print(env.observation_space.low)
 

@@ -1,3 +1,4 @@
+import gym, gym.spaces, gym.utils, gym.utils.seeding
 import numpy as np
 import pybullet
 from pybullet_utils import bullet_client

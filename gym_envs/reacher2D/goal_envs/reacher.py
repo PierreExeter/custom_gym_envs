@@ -1,4 +1,4 @@
-from gym_reacher_goalEnv.goal_envs.robot_bases import MJCFBasedRobot
+from gym_envs.reacher2D.goal_envs.robot_bases import MJCFBasedRobot
 import numpy as np
 
 
