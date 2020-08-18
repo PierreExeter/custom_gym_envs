@@ -9,6 +9,7 @@ from gym.utils import seeding
 import pybullet as p
 import pybullet_data
 
+
 class BalancebotEnv(gym.Env):
     metadata = {
         'render.modes': ['human', 'rgb_array'],
