@@ -9,11 +9,11 @@ import gym_envs
 # env = gym.make('Reacher3Dof-v0')
 # env = gym.make('Reacher4Dof-v0')
 # env = gym.make('Reacher5Dof-v0')
-# env = gym.make('Reacher6Dof-v0')
+env = gym.make('Reacher6Dof-v0')
 
 # with goal env
 # env = gym.make('Reacher1Dof-v1')
-env = gym.make('Reacher2Dof-v1')
+# env = gym.make('Reacher2Dof-v1')
 # env = gym.make('Reacher3Dof-v1')
 # env = gym.make('Reacher4Dof-v1')
 # env = gym.make('Reacher5Dof-v1')

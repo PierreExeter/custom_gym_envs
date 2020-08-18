@@ -26,11 +26,11 @@ print(env.observation_space.high)
 print(env.observation_space.low)
 
 
-for episode in range(3):
+for episode in range(10):
     obs = env.reset()             
     rewards = []
     
-    for t in range(102):
+    for t in range(1002):
         action = env.action_space.sample()  
         obs, reward, done, info = env.step(action) 
 

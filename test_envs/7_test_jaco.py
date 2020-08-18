@@ -20,7 +20,7 @@ for e in range(3):
     obs = env.reset()
     rewards = []
 
-    for i in range(100):
+    for i in range(1000):
         print(i)
         env.render()
         action = env.action_space.sample()

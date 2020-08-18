@@ -16,7 +16,7 @@ print("Observation space: ", env.observation_space)
 
 print(isinstance(env, gym.GoalEnv))
 
-for episode in range(20):
+for episode in range(200):
     obs = env.reset()             
     rewards = []
     
