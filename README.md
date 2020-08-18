@@ -35,7 +35,9 @@ python test_envs/4_test_reacher2D.py
 
 A simple Pybullet robot. The goal is to maintain the cube upwards as long as possible. Adapted from [this repo](https://github.com/yconst/balance-bot/).
 
-Environment name: balancebot-v0
+Environment name: 
+- balancebot-v0
+- balancebot-noise-v0
 
 <img src="imgs/balancebot.gif"/>
 
@@ -96,6 +98,21 @@ The Jaco arm in Pybullet. The goal is to bring the tip as close as possible to t
 Environment name: ReachingJaco-v1
 
 <img src="imgs/jaco.gif"/>
+
+
+### Minimal Working Example: Gym Env
+
+Environment name: foo-v0
+
+
+### Minimal Working Example: goalEnv
+
+Environment name: my_goal_env-v0
+
+
+### Tic-Tac-Toe environment
+
+Environment name: tictac-v0
 
 
 ## Requirements
