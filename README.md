@@ -102,19 +102,16 @@ Environment name: ReachingJaco-v1
 
 ### Minimal Working Example: Gym Env
 
-Environment name: foo-v0
-
-
-### Minimal Working Example: goalEnv
-
-Environment name: my_goal_env-v0
-
+Environment name: 
+- foo-v0    # Gym Env
+- my_goal_env-v0  # goalEnv
 
 ### Tic-Tac-Toe environment
 
 Environment name: tictac-v0
 
 
-## Requirements
+## Tested on
 
-conda 4.8.3
+- conda 4.8.3
+- Python 3.7
