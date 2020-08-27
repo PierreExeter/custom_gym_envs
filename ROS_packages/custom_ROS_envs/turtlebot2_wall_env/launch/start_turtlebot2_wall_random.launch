@@ -1,0 +1,7 @@
+<launch>
+    <!-- This version uses the openai_ros environments -->
+    <rosparam command="load" file="$(find turtlebot2_wall_env)/config/turtlebot2_wall_params.yaml" />
+
+    <!-- Launch the training system -->
+    <node pkg="turtlebot2_wall_env" name="turtlebot2_wall_random" type="turtlebot2_wall_random.py" output="screen"/>
+</launch>

@@ -1,20 +1,98 @@
 # Custom Gym Environments
 Some custom Gym environments for reinforcement learning.
 
-## Installation and environment registration
+## Installation and environment registration (Pybullet-based environments)
 
 ```bash
 git clone https://github.com/PierreExeter/custom_gym_envs.git
+cd custom_gym_envs/
 conda env create -f environment.yml
 conda activate gym_envs
 pip install -e .   # to register the Gym environmnents locally
 ```
+## Installation of the ROS-based environments
 
-## Test the environments
+1. Install ROS Melodic
+
+2. Create and initialise catkin workspace
+
+3. Install code and create simulation workspace
+
+
+```bash
+mkdir -p ~/simulation_ws/src
+cp -r custom_gym_envs/ROS_packages/openai_ros ~/simulation_ws/src
+
+# Alternatively, clone original repository and checkout version2
+# git clone https://bitbucket.org/theconstructcore/openai_ros.git
+# cd openai_ros
+# git checkout version2
+
+cd ~/simulation_ws/
+catkin_make
+source devel/setup.bash
+echo $ROS_PACKAGE_PATH
+```
+
+Check that you see something like:
+
+```bash
+/home/user/simulation_ws/src:/home/user/catkin_ws/src:/opt/ros/melodic/share
+```
+
+```bash
+cp -r custom_gym_envs/ROS_packages/custom_ROS_envs/ ~/catkin_ws/src
+cd ~/catkin_ws
+catkin_make
+```
+
+
+vim config/my_turtlebot2_maze_params.yaml
+```
+
+4. Edit ros_ws_abspath 
+
+In each config folder, edit the yaml file and change the ros_ws_abspath to match your path: "/home/user/simulation_ws".
+For example:
+
+```bash
+vim ~/catkin_ws/src/custom_ROS_envs/cartpole3d_env/config/cartpole3d_random_params.yaml
+```
+
+5. Source and load rospack profile
+
+In a new shell, execute:
+
+```bash
+cd ~/simulation_ws
+catkin_make
+source devel/setup.bash
+rospack profile
+```
+
+In your main shell, execute:
+
+```bash
+cd ~/catkin_ws
+source devel/setup.bash
+rospack profile
+```
+
+
+## Test the ROS-based environments
+
+```bash
+roslaunch cartpole3d_env start_training_cartpole3d_random.launch
+roslaunch turtlebot2_wall_env start_turtlebot2_wall_random.launch
+roslaunch turtlebot2_maze_env start_turtlebot2_maze_random.launch
+```
+
+
+## Test the Pybullet environments
 
 Execute scripts in the test_envs folder. For example:
 
-```
+```bash
 python test_envs/4_test_reacher2D.py
 ```
 
@@ -99,6 +177,26 @@ Environment name: ReachingJaco-v1
 
 <img src="imgs/jaco.gif"/>
 
+
+### Cartpole3D ROS
+
+The Cartpole in ROS / Gazebo. The goal is to balance the pole upwards as long as possible. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
+
+<img src="imgs/cartpole3d.gif"/>
+
+
+### Turtlebot2 Maze ROS
+
+The Turtlebot2 in ROS / Gazebo. The goal is to avoid touching the walls. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
+
+<img src="imgs/turtlebot2_maze.gif"/>
+
+
+### Turtlebot2 Wall ROS
+
+The Turtlebot2 in ROS / Gazebo. The goal is to avoid touching the wall. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
+
+<img src="imgs/turtlebot2_wall.gif"/>
 
 ### Minimal Working Example: Gym Env
 
