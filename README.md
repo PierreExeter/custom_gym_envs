@@ -46,10 +46,6 @@ cd ~/catkin_ws
 catkin_make
 ```
 
-
-vim config/my_turtlebot2_maze_params.yaml
-```
-
 4. Edit ros_ws_abspath 
 
 In each config folder, edit the yaml file and change the ros_ws_abspath to match your path: "/home/user/simulation_ws".
@@ -83,8 +79,8 @@ rospack profile
 
 ```bash
 roslaunch cartpole3d_env start_training_cartpole3d_random.launch
-roslaunch turtlebot2_wall_env start_turtlebot2_wall_random.launch
 roslaunch turtlebot2_maze_env start_turtlebot2_maze_random.launch
+roslaunch turtlebot2_wall_env start_turtlebot2_wall_random.launch
 ```
 
 
@@ -107,6 +103,10 @@ python test_envs/4_test_reacher2D.py
 | widowx_reacher-v5 | Box(6,): [angle_change_joint1, angle_change_joint2, angle_change_joint3, angle_change_joint4, angle_change_joint5, angle_change_joint6] | Box(9,): [target_x, target_y, target_z, joint_angle1, joint_angle2, joint_angle3, joint_angle4, joint_angle5, joint_angle6] | - dist ^ 2 |
 | widowx_reacher-v7 | Box(6,): [angle_change_joint1, angle_change_joint2, angle_change_joint3, angle_change_joint4, angle_change_joint5, angle_change_joint6] | Dict("achieved_goal": [tip_x, tip_y, tip_z], "desired_goal": [target_x, target_y, target_z], "observation": *same as above* ) | - dist ^ 2 |
 | ReachingJaco-v1 | Box(7,): [joint1_angle + 0.05 * action1, joint2_angle + 0.05 * action2, joint3_angle + 0.05 * action3, joint4_angle + 0.05 * action4, joint5_angle + 0.05 * action5, joint6_angle + 0.05 * action6, joint7_angle + 0.05 * action7]  | Box(17,): [gripper_x - torso_x, gripper_y - torso_y, gripper_z - torso_z, gripper_x - target_x, gripper_y - target_y, gripper_z - target_z, joint_angle1, joint_angle2, joint_angle3, joint_angle4, joint_angle5, joint_angle6, joint_angle7, gripper_orient_x, gripper_orient_y, gripper_orient_z, gripper_orient_w]  | - dist |
+| CartPoleStayUp-v0 | Discrete(2): 0 = "move cart to position - pos_step (move left)" or 1 = "move cart to position + pos_step (move right)" | Box(4,): [base_position, base_velocity, pole_angle, pole_velocity]  | if not done: reward = reward_pole_angle + reward_for_effective_movement else reward = -2000000 |
+| MyTurtleBot2Maze-v0 | Discrete(3): 0 = "move forward", 1 = "turn left", 2 = "turn right" | Box(6,): [laser_scan array]  | if not done: reward = +5 (forward) or +1 (turn) else reward = -200 |
+| MyTurtleBot2Wall-v0 | Discrete(3): 0 = "move forward", 1 = "turn left", 2 = "turn right" | Box(7,): [discretized_laser_scan, odometry_array]  | if not done: reward = +5 (forward) or +1 (turn) ; if distance_difference < 0: reward = +5 ; if done and in desired_position: reward = +200 else reward = -200 |
+
 
 
 ### Balance Bot
@@ -187,14 +187,14 @@ The Cartpole in ROS / Gazebo. The goal is to balance the pole upwards as long as
 
 ### Turtlebot2 Maze ROS
 
-The Turtlebot2 in ROS / Gazebo. The goal is to avoid touching the walls. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
+The Turtlebot2 robot in ROS / Gazebo. The goal is to avoid touching the walls. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
 
 <img src="imgs/turtlebot2_maze.gif"/>
 
 
 ### Turtlebot2 Wall ROS
 
-The Turtlebot2 in ROS / Gazebo. The goal is to avoid touching the wall. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
+The Turtlebot2 robot in ROS / Gazebo. The goal is to avoid touching the wall. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
 
 <img src="imgs/turtlebot2_wall.gif"/>
 

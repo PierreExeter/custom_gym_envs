@@ -30,6 +30,7 @@ for episode in range(20):
         print("episode: ", episode)
         print("timestep: ", t)
         print("obs: ", obs)
+        print("action:", action)
         print("reward: ", reward)
         print("done: ", done)
         print("info: ", info)
