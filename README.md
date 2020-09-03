@@ -16,7 +16,7 @@ pip install -e .   # to register the Gym environmnents locally
 
 2. Create and initialise your [Catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
-3. Install dependencies for the Kinova-ros package, as indicated [here](https://github.com/Kinovarobotics/kinova-ros/wiki/Gazebo).
+3. Install the dependencies for the Kinova-ros package, as indicated [here](https://github.com/Kinovarobotics/kinova-ros/wiki/Gazebo).
 
 ```bash
 sudo apt-get install ros-<distro>-gazebo-ros-control
@@ -30,8 +30,7 @@ sudo apt-get install ros-<distro>-controller-*
 
 (replace `<distro>` by your ROS distribution, for example `kinetic` or `melodic`)
 
-3. Install ROS packages and create simulation workspace
-
+4. Install ROS packages and create simulation workspace
 
 ```bash
 mkdir -p ~/simulation_ws/src
@@ -60,7 +59,7 @@ cd ~/catkin_ws
 catkin_make
 ```
 
-4. Edit ros_ws_abspath 
+5. Edit ros_ws_abspath 
 
 In each config folder, edit the yaml file and change the ros_ws_abspath to match your path: "/home/user/simulation_ws".
 For example:
@@ -69,7 +68,7 @@ For example:
 vim ~/catkin_ws/src/custom_ROS_envs/cartpole3d_env/config/cartpole3d_random_params.yaml
 ```
 
-5. Source and load rospack profile
+6. Source and load rospack profile
 
 In a new shell, execute:
 
