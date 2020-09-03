@@ -124,7 +124,8 @@ Environment name:
 
 A Goal Env (for testing Hindsight Experience Replay) where a red particle must reach the green target in a 2D plane. The particle is controlled by force. Adapted from [here](https://github.com/openai/baselines/issues/428)
 
-Environment name: particle-v0
+Environment name: 
+- particle-v0
 
 <img src="imgs/particle.gif"/>
 
@@ -139,12 +140,12 @@ Environment name:
 - Reacher4Dof-v0
 - Reacher5Dof-v0
 - Reacher6Dof-v0
-- Reacher1Dof-v1  # goalEnv
-- Reacher2Dof-v1  # goalEnv
-- Reacher3Dof-v1  # goalEnv
-- Reacher4Dof-v1  # goalEnv
-- Reacher5Dof-v1  # goalEnv
-- Reacher6Dof-v1  # goalEnv
+- Reacher1Dof-v1  (goalEnv)
+- Reacher2Dof-v1  (goalEnv)
+- Reacher3Dof-v1  (goalEnv)
+- Reacher4Dof-v1  (goalEnv)
+- Reacher5Dof-v1  (goalEnv)
+- Reacher6Dof-v1  (goalEnv)
 
 
 <img src="imgs/reacher2D.gif"/>
@@ -154,17 +155,17 @@ Environment name:
 The WidowX robotic arm in Pybullet. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/bhyang/replab).
 
 Environment name:
-- widowx_reacher-v0   # environment for both the physical arm and the Pybullet simulation
-- widowx_reacher-v1   # environment for the physical arm only 
-- widowx_reacher-v2   # environment for the physical arm only + no start_rospy method 
-- widowx_reacher-v3   # environment for the physical arm only + no start_rospy method + goal oriented
-- widowx_reacher-v4   # environment for the Pybullet simulation only. ROS install not required
-- widowx_reacher-v5   # environment for the Pybullet simulation + no start_sim required + fixed goal
-- widowx_reacher-v6   # environment for the Pybullet simulation + no start_sim required + goal_oriented + fixed goal
-- widowx_reacher-v7   # environment for the Pybullet simulation + no start_sim required + random goal
-- widowx_reacher-v8   # environment for the Pybullet simulation + no start_sim required + goal_oriented + random goal
-- widowx_reacher-v12  # environment for the physical arm only + no start_rospy method + random goal
-- widowx_reacher-v13  # environment for the physical arm only + no start_rospy method + goal environment + random goal
+- widowx_reacher-v0   (env for both the physical arm and the Pybullet simulation)
+- widowx_reacher-v1   (env for the physical arm only) 
+- widowx_reacher-v2   (env for the physical arm only + no start_rospy method)
+- widowx_reacher-v3   (env for the physical arm only + no start_rospy method + goal oriented)
+- widowx_reacher-v4   (env for the Pybullet simulation only. ROS install not required)
+- widowx_reacher-v5   (env for the Pybullet simulation + no start_sim required + fixed goal)
+- widowx_reacher-v6   (env for the Pybullet simulation + no start_sim required + goal_oriented + fixed goal)
+- widowx_reacher-v7   (env for the Pybullet simulation + no start_sim required + random goal)
+- widowx_reacher-v8   (env for the Pybullet simulation + no start_sim required + goal_oriented + random goal)
+- widowx_reacher-v12  (env for the physical arm only + no start_rospy method + random goal)
+- widowx_reacher-v13  (env for the physical arm only + no start_rospy method + goal environment + random goal)
 
 
 <img src="imgs/widowx.gif"/>
@@ -173,7 +174,8 @@ Environment name:
 
 The Jaco arm in Pybullet. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/Healthcare-Robotics/assistive-gym).
 
-Environment name: ReachingJaco-v1
+Environment name: 
+- ReachingJaco-v1
 
 <img src="imgs/jaco.gif"/>
 
@@ -182,12 +184,18 @@ Environment name: ReachingJaco-v1
 
 The Cartpole in ROS / Gazebo. The goal is to balance the pole upwards as long as possible. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
 
+Environment name: 
+- CartPoleStayUp-v0
+
 <img src="imgs/cartpole3d.gif"/>
 
 
 ### Turtlebot2 Maze ROS
 
 The Turtlebot2 robot in ROS / Gazebo. The goal is to avoid touching the walls. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
+
+Environment name: 
+- MyTurtleBot2Maze-v0
 
 <img src="imgs/turtlebot2_maze.gif"/>
 
@@ -196,17 +204,21 @@ The Turtlebot2 robot in ROS / Gazebo. The goal is to avoid touching the walls. A
 
 The Turtlebot2 robot in ROS / Gazebo. The goal is to avoid touching the wall. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
 
+Environment name: 
+- MyTurtleBot2Wall-v0
+
 <img src="imgs/turtlebot2_wall.gif"/>
 
 ### Minimal Working Example: Gym Env
 
 Environment name: 
-- foo-v0    # Gym Env
-- my_goal_env-v0  # goalEnv
+- foo-v0    (Gym Env)
+- my_goal_env-v0  (goalEnv)
 
 ### Tic-Tac-Toe environment
 
-Environment name: tictac-v0
+Environment name: 
+- tictac-v0
 
 
 ## Tested on
