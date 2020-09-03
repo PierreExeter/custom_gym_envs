@@ -14,9 +14,23 @@ pip install -e .   # to register the Gym environmnents locally
 
 1. Install ROS Melodic
 
-2. Create and initialise catkin workspace
+2. Create and initialise your [Catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
-3. Install code and create simulation workspace
+3. Install dependencies for the Kinova-ros package, as indicated [here](https://github.com/Kinovarobotics/kinova-ros/wiki/Gazebo).
+
+```bash
+sudo apt-get install ros-<distro>-gazebo-ros-control
+sudo apt-get install ros-<distro>-ros-controllers*
+sudo apt-get install ros-<distro>-trac-ik-kinematics-plugin
+sudo apt-get install ros-<distro>-effort-controllers 
+sudo apt-get install ros-<distro>-joint-state-controller 
+sudo apt-get install ros-<distro>-joint-trajectory-controller 
+sudo apt-get install ros-<distro>-controller-*
+```
+
+(replace `<distro>` by your ROS distribution, for example `kinetic` or `melodic`)
+
+3. Install ROS packages and create simulation workspace
 
 
 ```bash
@@ -92,6 +106,25 @@ Execute scripts in the test_envs folder. For example:
 python test_envs/4_test_reacher2D.py
 ```
 
+## Test the Jaco Reach environments in Gazebo
+
+First, execute the ROS launch in a separate terminal:
+
+```bash
+roslaunch kinova_gazebo robot_launch_render.launch kinova_robotType:=j2n6s300  # Gazebo simulation
+# OR
+roslaunch kinova_bringup kinova_robot.launch kinova_robotType:=j2n6s300   # Physical arm
+```
+
+Then execute the test script in the test_envs folder. For example:
+
+```bash
+python test_envs/8_test_jaco_gazebo_actionlib.py
+```
+
+Note, the kinova-ros package was adapted from the [official package](https://github.com/Kinovarobotics/kinova-ros).
+
+
 ## Environments description
 
 | Name     | Action space       | Observation space      | Rewards       |
@@ -106,7 +139,7 @@ python test_envs/4_test_reacher2D.py
 | CartPoleStayUp-v0 | Discrete(2): 0 = "move cart to position - pos_step (move left)" or 1 = "move cart to position + pos_step (move right)" | Box(4,): [base_position, base_velocity, pole_angle, pole_velocity]  | if not done: reward = reward_pole_angle + reward_for_effective_movement else reward = -2000000 |
 | MyTurtleBot2Maze-v0 | Discrete(3): 0 = "move forward", 1 = "turn left", 2 = "turn right" | Box(6,): [laser_scan array]  | if not done: reward = +5 (forward) or +1 (turn) else reward = -200 |
 | MyTurtleBot2Wall-v0 | Discrete(3): 0 = "move forward", 1 = "turn left", 2 = "turn right" | Box(7,): [discretized_laser_scan, odometry_array]  | if not done: reward = +5 (forward) or +1 (turn) ; if distance_difference < 0: reward = +5 ; if done and in desired_position: reward = +200 else reward = -200 |
-
+| JacoReachGazebo-v1 | Box(6,): [joint_angle_array] | Box(12,): [joint_angle_array, joint_angular_velocity_array]  | - dist |
 
 
 ### Balance Bot (Pybullet)
@@ -215,9 +248,9 @@ Environment name:
 The Jaco arm in ROS / Gazebo. The goal is to bring the tip as close as possible to the target sphere.
 
 Environment name: 
-- JacoGazebo-v0 (Jaco arm in Gazebo with Topics)
-- JacoGazebo-v1 (Jaco arm in Gazebo with actionlib)
-- JacoReal-v0 (Physical Jaco arm env)
+- JacoReachGazebo-v0 (Jaco arm in Gazebo with Topics)
+- JacoReachGazebo-v1 (Jaco arm in Gazebo with actionlib)
+- JacoReachReal-v0 (Physical Jaco arm env)
 
 <img src="imgs/jaco_ros.gif"/>
 
