@@ -109,7 +109,7 @@ python test_envs/4_test_reacher2D.py
 
 
 
-### Balance Bot
+### Balance Bot (Pybullet)
 
 A simple Pybullet robot. The goal is to maintain the cube upwards as long as possible. Adapted from [this repo](https://github.com/yconst/balance-bot/).
 
@@ -129,7 +129,7 @@ Environment name:
 
 <img src="imgs/particle.gif"/>
 
-### Reacher2D
+### Reacher2D (Pybullet)
 
 An articulated arm in a 2D plane composed of 1 to 6 joints. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/benelot/pybullet-gym).
 
@@ -150,7 +150,7 @@ Environment name:
 
 <img src="imgs/reacher2D.gif"/>
 
-### WidowX arm
+### WidowX arm (Pybullet)
 
 The WidowX robotic arm in Pybullet. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/bhyang/replab).
 
@@ -170,7 +170,7 @@ Environment name:
 
 <img src="imgs/widowx.gif"/>
 
-### Jaco arm
+### Jaco arm (Pybullet)
 
 The Jaco arm in Pybullet. The goal is to bring the tip as close as possible to the target sphere. Adapted from [this repo](https://github.com/Healthcare-Robotics/assistive-gym).
 
@@ -180,7 +180,7 @@ Environment name:
 <img src="imgs/jaco.gif"/>
 
 
-### Cartpole3D ROS
+### Cartpole3D (ROS / Gazebo)
 
 The Cartpole in ROS / Gazebo. The goal is to balance the pole upwards as long as possible. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
 
@@ -190,7 +190,7 @@ Environment name:
 <img src="imgs/cartpole3d.gif"/>
 
 
-### Turtlebot2 Maze ROS
+### Turtlebot2 Maze (ROS / Gazebo)
 
 The Turtlebot2 robot in ROS / Gazebo. The goal is to avoid touching the walls. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
 
@@ -200,7 +200,7 @@ Environment name:
 <img src="imgs/turtlebot2_maze.gif"/>
 
 
-### Turtlebot2 Wall ROS
+### Turtlebot2 Wall (ROS / Gazebo)
 
 The Turtlebot2 robot in ROS / Gazebo. The goal is to avoid touching the wall. Adapted from [this repo](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/). 
 
@@ -209,10 +209,23 @@ Environment name:
 
 <img src="imgs/turtlebot2_wall.gif"/>
 
-### Minimal Working Example: Gym Env
+
+### Jaco arm (ROS / Gazebo)
+
+The Jaco arm in ROS / Gazebo. The goal is to bring the tip as close as possible to the target sphere.
 
 Environment name: 
-- foo-v0    (Gym Env)
+- JacoGazebo-v0 (Jaco arm in Gazebo with Topics)
+- JacoGazebo-v1 (Jaco arm in Gazebo with actionlib)
+- JacoReal-v0 (Physical Jaco arm env)
+
+<img src="imgs/jaco_ros.gif"/>
+
+
+### Minimal Working Example: GymEnv and GoalEnv
+
+Environment name: 
+- foo-v0    (GymEnv)
 - my_goal_env-v0  (goalEnv)
 
 ### Tic-Tac-Toe environment

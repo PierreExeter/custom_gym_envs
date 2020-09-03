@@ -208,3 +208,28 @@ register(
     entry_point='gym_envs.7_reaching_jaco.reaching:ReachingEnv',
     max_episode_steps=100,
 )
+
+#*********************************************
+
+
+# environment using the ROS Topics to move the arm in Gazebo
+register(
+    id='JacoReachGazebo-v0',
+    entry_point='gym_envs.8_reaching_jaco_ROS.jaco_gazebo_topic_env:JacoEnv',
+    max_episode_steps=50
+)
+
+# environment using ROS Action client to move the arm in Gazebo
+register(
+    id='JacoReachGazebo-v1',
+    entry_point='gym_envs.8_reaching_jaco_ROS.jaco_gazebo_action_env:JacoEnv',
+    max_episode_steps=50
+)
+
+# environment to move the real arm
+register(
+    id='JacoReachReal-v0',
+    entry_point='gym_envs.8_reaching_jaco_ROS.jaco_real_env:JacoEnv',
+    max_episode_steps=50
+)
+
