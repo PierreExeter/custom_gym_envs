@@ -88,9 +88,13 @@ class JacoGazeboActionClient:
         self.client.send_goal(goal)
         self.client.wait_for_result()
 
-        rospy.sleep(2)      # wait for 2s
+        # wait for the robot to finish moving
+        # rospy.sleep(2)      # wait for 2s
+        while not self.robot_has_stopped():
+            pass
 
         # return self.client.get_state()
+
 
     def move_sphere(self, coords_list):
 
@@ -160,7 +164,7 @@ class JacoGazeboActionClient:
 
     def read_state_simple(self):
         """
-        read state of the joints only (not the finglers) + removed the efforts
+        read state of the joints only (not the fingers) + removed the efforts
         """
 
         self.status = rospy.wait_for_message("/j2n6s300/joint_states", JointState)
@@ -173,6 +177,30 @@ class JacoGazeboActionClient:
 
         # return self.status
         return np.asarray(self.pos + self.vel)
+
+
+    def robot_has_stopped(self):
+        """
+        Check if the robot joints are moving
+        """
+        self.status = rospy.wait_for_message("/j2n6s300/joint_states", JointState)
+        self.vel = self.status.velocity[:6]
+
+        self.is_stopped = False
+        if (abs(self.vel[0]) < 0.01):
+             self.is_stopped = True
+
+        return self.is_stopped
+
+    def read_angle_joint1(self):
+        """
+        read joint angle 1
+        """
+
+        self.status = rospy.wait_for_message("/j2n6s300/joint_states", JointState)
+        self.pos = self.status.position[:1]
+  
+        return np.asarray(self.pos)
 
 
     def get_tip_coord(self):

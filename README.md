@@ -139,7 +139,7 @@ Note, the kinova-ros package was adapted from the [official package](https://git
 | MyTurtleBot2Maze-v0 | Discrete(3): 0 = "move forward", 1 = "turn left", 2 = "turn right" | Box(6,): [laser_scan array]  | if not done: reward = +5 (forward) or +1 (turn) else reward = -200 |
 | MyTurtleBot2Wall-v0 | Discrete(3): 0 = "move forward", 1 = "turn left", 2 = "turn right" | Box(7,): [discretized_laser_scan, odometry_array]  | if not done: reward = +5 (forward) or +1 (turn) ; if distance_difference < 0: reward = +5 ; if done and in desired_position: reward = +200 else reward = -200 |
 | JacoReachGazebo-v1 | Box(6,): [joint_angle_array] | Box(12,): [joint_angle_array, joint_angular_velocity_array]  | - dist |
-
+| JacoReachGazebo-v2 | Box(1,): [angle1_increment] | Box(4,): [joint1_angle, target_x, target_y, target_z]  | - dist |
 
 ### Balance Bot (Pybullet)
 
@@ -249,9 +249,12 @@ The Jaco arm in ROS / Gazebo. The goal is to bring the tip as close as possible 
 Environment name: 
 - JacoReachGazebo-v0 (Jaco arm in Gazebo with Topics)
 - JacoReachGazebo-v1 (Jaco arm in Gazebo with actionlib)
+- JacoReachGazebo-v2 (Jaco arm in Gazebo with actionlib + fixed target + only 1 joint moving + angle change)
 - JacoReachReal-v0 (Physical Jaco arm env)
 
 <img src="imgs/jaco_ros.gif"/>
+
+<img src="imgs/jaco_ros_simple.gif"/>
 
 
 ### Minimal Working Example: GymEnv and GoalEnv
