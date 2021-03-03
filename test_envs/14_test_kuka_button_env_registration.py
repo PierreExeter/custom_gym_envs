@@ -28,6 +28,7 @@ for episode in range(5):
         # action = [0, 0, 0, 0, 0, 4]
 
         obs, reward, done, info = env.step(action)
+        env.render()
 
         print("action: ", action)
         print("obs: ", obs)

@@ -252,21 +252,21 @@ register(
 
 register(
     id='Kuka2ButtonGymEnv-v0',
-    entry_point='gym_envs.kuka_gym.kuka_button_gym_env:KukaButtonGymEnv',
+    entry_point='gym_envs.kuka_gym.kuka_2button_gym_env:Kuka2ButtonGymEnv',
     max_episode_steps=None,
     reward_threshold=None
     )
 
 register(
     id='KukaMovingButtonGymEnv-v0',
-    entry_point='gym_envs.kuka_gym.kuka_button_gym_env:KukaButtonGymEnv',
+    entry_point='gym_envs.kuka_gym.kuka_moving_button_gym_env:KukaMovingButtonGymEnv',
     max_episode_steps=None,
     reward_threshold=None
     )
 
 register(
     id='KukaRandButtonGymEnv-v0',
-    entry_point='gym_envs.kuka_gym.kuka_button_gym_env:KukaButtonGymEnv',
+    entry_point='gym_envs.kuka_gym.kuka_rand_button_gym_env:KukaRandButtonGymEnv',
     max_episode_steps=None,
     reward_threshold=None
     )

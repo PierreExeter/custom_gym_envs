@@ -68,7 +68,7 @@ class KukaButtonGymEnv(SRLGymEnv):
     def __init__(
         self,
         urdf_root=pybullet_data.getDataPath(),
-        renders=False,
+        renders=True,
         is_discrete=True,
         multi_view=False,
         name="kuka_button_gym",
