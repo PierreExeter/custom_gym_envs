@@ -1,16 +1,14 @@
+"""
+Gym wrapper for Kuka arm RL
+"""
+
 import os
 import pybullet as p
 import time
-
 import numpy as np
-# import torch as th
 import pybullet_data
 from gym import spaces
-
 from gym_envs.srl_env import SRLGymEnv
-# from state_representation.episode_saver import EpisodeSaver  # commented by Pierre
-# from srl_zoo.preprocessing import getNChannels # commented by Pierre
-
 from gym_envs.kuka_gym import kuka
 
 #  Number of steps before termination
@@ -33,9 +31,7 @@ NOISE_STD_CONTINUOUS = 0.0001
 NOISE_STD_JOINTS = 0.002
 N_RANDOM_ACTIONS_AT_INIT = 5  # Randomize init arm pos: take 5 random actions
 BUTTON_DISTANCE_HEIGHT = 0.28  # Extra height added to the buttons position in the distance calculation
-
 CONNECTED_TO_SIMULATOR = False  # To avoid calling disconnect in the __del__ method when not needed
-
 NCHANNELS = 3  # added by Pierre
 
 def getGlobals():
@@ -44,12 +40,6 @@ def getGlobals():
     """
     return globals()
 
-
-# TODO: improve the physics of the button
-
-"""
-Gym wrapper for Kuka arm RL
-"""
 
 
 class KukaButtonGymEnv(SRLGymEnv):
@@ -75,10 +65,27 @@ class KukaButtonGymEnv(SRLGymEnv):
     :param srl_model: (str) The SRL_model used
     """
 
-    def __init__(self, urdf_root=pybullet_data.getDataPath(), renders=False, is_discrete=True, multi_view=False,
-                 name="kuka_button_gym", max_distance=0.8, action_repeat=1, shape_reward=False, action_joints=False,
-                 random_target=False, force_down=True, state_dim=-1, learn_states=False,
-                 verbose=False, save_path='srl_zoo/data/', env_rank=0, srl_pipe=None, srl_model="raw_pixels", **_):
+    def __init__(
+        self,
+        urdf_root=pybullet_data.getDataPath(),
+        renders=False,
+        is_discrete=True,
+        multi_view=False,
+        name="kuka_button_gym",
+        max_distance=0.8,
+        action_repeat=1,
+        shape_reward=False,
+        action_joints=False,
+        random_target=False,
+        force_down=True,
+        state_dim=-1,
+        learn_states=False,
+        verbose=False,
+        save_path='srl_zoo/data/',
+        env_rank=0,
+        srl_pipe=None,
+        srl_model="raw_pixels", **_):
+
         super(KukaButtonGymEnv, self).__init__(srl_model=srl_model,
                                                relative_pos=RELATIVE_POS,
                                                env_rank=env_rank,
@@ -108,7 +115,6 @@ class KukaButtonGymEnv(SRLGymEnv):
         self.state_dim = state_dim
         self.action_joints = action_joints
         self.relative_pos = RELATIVE_POS
-        # self.cuda = th.cuda.is_available() # commented by Pierre
         self.saver = None
         self.multi_view = multi_view
         self.verbose = verbose
@@ -120,11 +126,6 @@ class KukaButtonGymEnv(SRLGymEnv):
         self._kuka = None
         self.action = None
         self.srl_model = srl_model
-
-        # commented by Pierre
-        # if record_data:
-        #     self.saver = EpisodeSaver(name, max_distance, state_dim, globals_=getGlobals(), relative_pos=RELATIVE_POS,
-        #                               learn_states=learn_states, path=save_path)
 
         if self._renders:
             client_id = p.connect(p.SHARED_MEMORY)
@@ -169,9 +170,17 @@ class KukaButtonGymEnv(SRLGymEnv):
             self.state_dim = self.getGroundTruthDim() + self.getJointsDim()
 
         if self.srl_model == "raw_pixels":
-            self.observation_space = spaces.Box(low=0, high=255, shape=(self._height, self._width, 3), dtype=np.uint8)
+            self.observation_space = spaces.Box(
+                low=0,
+                high=255,
+                shape=(self._height, self._width, 3),
+                dtype=np.uint8)
         else:
-            self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(self.state_dim,), dtype=np.float32)
+            self.observation_space = spaces.Box(
+                low=-np.inf, 
+                high=np.inf, 
+                shape=(self.state_dim,), 
+                dtype=np.float32)
 
     def getSRLState(self, observation):
         state = []
@@ -221,8 +230,15 @@ class KukaButtonGymEnv(SRLGymEnv):
         p.setTimeStep(self._timestep)
         p.loadURDF(os.path.join(self._urdf_root, "plane.urdf"), [0, 0, -1])
 
-        self.table_uid = p.loadURDF(os.path.join(self._urdf_root, "table/table.urdf"), 0.5000000, 0.00000, -.820000,
-                                    0.000000, 0.000000, 0.0, 1.0)
+        self.table_uid = p.loadURDF(
+            os.path.join(self._urdf_root, "table/table.urdf"),
+            0.5000000, 
+            0.00000,
+            -.820000,
+            0.000000,
+            0.000000,
+            0.0,
+            1.0)
 
         # Initialize button position
         x_pos = 0.5
@@ -345,7 +361,11 @@ class KukaButtonGymEnv(SRLGymEnv):
         :param action:([float])
         """
         # Apply force to the button
-        p.setJointMotorControl2(self.button_uid, BUTTON_GLIDER_IDX, controlMode=p.POSITION_CONTROL, targetPosition=0.1)
+        p.setJointMotorControl2(
+            self.button_uid,
+            BUTTON_GLIDER_IDX,
+            controlMode=p.POSITION_CONTROL,
+            targetPosition=0.1)
 
         for i in range(self._action_repeat):
             self._kuka.applyAction(action)

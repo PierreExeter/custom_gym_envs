@@ -28,7 +28,11 @@ class Kuka2ButtonGymEnv(KukaButtonGymEnv):
     """
 
     def __init__(self, name="kuka_2button_gym", max_distance=2, force_down=False, **kwargs):
-        super(Kuka2ButtonGymEnv, self).__init__(name=name, max_distance=max_distance, force_down=force_down, **kwargs)
+        super(Kuka2ButtonGymEnv, self).__init__(
+            name=name, 
+            max_distance=max_distance, 
+            force_down=force_down, 
+            **kwargs)
 
         self.max_steps = MAX_STEPS
         self.n_contacts = [0, 0]
@@ -46,8 +50,15 @@ class Kuka2ButtonGymEnv(KukaButtonGymEnv):
         p.setTimeStep(self._timestep)
         p.loadURDF(os.path.join(self._urdf_root, "plane.urdf"), [0, 0, -1])
 
-        self.table_uid = p.loadURDF(os.path.join(self._urdf_root, "table/table.urdf"), 0.5000000, 0.00000, -.820000,
-                                    0.000000, 0.000000, 0.0, 1.0)
+        self.table_uid = p.loadURDF(
+            os.path.join(self._urdf_root, "table/table.urdf"),
+            0.5000000,
+            0.00000,
+            -.820000,
+            0.000000,
+            0.000000,
+            0.0,
+            1.0)
 
         # Initialize button position
         x_pos = 0.5
