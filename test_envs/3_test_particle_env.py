@@ -14,7 +14,7 @@ print("Observation space: ", env.observation_space)
 # print(env.observation_space.low)
 
 
-print(isinstance(env, gym.GoalEnv))
+print("isinstance(env, gym.GoalEnv)", isinstance(env, gym.GoalEnv))
 
 for episode in range(200):
     obs = env.reset()             

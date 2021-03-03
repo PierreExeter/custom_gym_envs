@@ -42,11 +42,11 @@ class ReachingEnv(RobotEnv):
         robot_right_joint_positions = np.array([x[0] for x in p.getJointStates(self.robot, jointIndices=self.robot_right_arm_joint_indices, physicsClientId=self.id)])
         gripper_pos, gripper_orient = p.getLinkState(self.robot, 8, computeForwardKinematics=True, physicsClientId=self.id)[:2]
 
-        print("torso_pos: ", torso_pos)
-        print("robot_right_joint_positions: ", robot_right_joint_positions)
-        print("gripper_pos: ", gripper_pos)
-        print("gripper_orient: ", gripper_orient)
-        print("self.target_pos: ", self.target_pos)
+        # print("torso_pos: ", torso_pos)
+        # print("robot_right_joint_positions: ", robot_right_joint_positions)
+        # print("gripper_pos: ", gripper_pos)
+        # print("gripper_orient: ", gripper_orient)
+        # print("self.target_pos: ", self.target_pos)
         # print("forces: ", forces)
 
         # why did they define the robot obs this way and not by joint angle position and velocity (sounds more intuitive)?

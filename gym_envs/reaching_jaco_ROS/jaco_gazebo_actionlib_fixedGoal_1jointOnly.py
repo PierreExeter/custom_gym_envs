@@ -64,7 +64,7 @@ class JacoEnv(gym.Env):
         self.reward = - self.dist_to_target 
 
         # create info
-        self.info = {"tip coordinates": self.tip_coord, "target coordinates": self.target_vect}
+        self.info = {"tip position": self.tip_coord, "goal position": self.target_vect, "total_distance": self.dist_to_target}
 
         # create done
         self.done = False
@@ -103,7 +103,7 @@ class JacoEnv(gym.Env):
         print("Fixed target coordinates initialised")
 
         # if testing: graphically move the sphere target, if training, comment this line
-        self.robot.move_sphere(self.target_vect)
+        # self.robot.move_sphere(self.target_vect)
 
         return self.obs
 

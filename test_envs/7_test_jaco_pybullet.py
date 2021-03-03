@@ -12,7 +12,7 @@ print(env.observation_space.high)
 print(env.observation_space.low)
 
 
-env.render()
+# env.render()
 # env.render(mode="human")  # required by Stable Baselines
 
 for e in range(3):
@@ -22,7 +22,7 @@ for e in range(3):
 
     for i in range(1000):
         print(i)
-        env.render()
+        # env.render()
         action = env.action_space.sample()
         obs, reward, done, info = env.step(action)
 
